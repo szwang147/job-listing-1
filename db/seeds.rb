@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts"1@1, 10jobs"
+
+create_account = User.create(email:"1@1", password:"123123")
+
+create_jos = for i in 1..10 do
+Job.create!(title: "job no.#{i}", description: "created by #{i} job for something",)
+end
