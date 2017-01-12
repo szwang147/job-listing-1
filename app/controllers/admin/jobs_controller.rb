@@ -41,13 +41,13 @@ class Admin::JobsController < ApplicationController
       redirect_to admin_jobs_path, alert:"delete success"
     end
 
-
-    def require_is_admin
-      # if current_user.email != '1@1'
-        if !current_user.admin?
-        redirect_to root_path, alert:"you are not admin"
-      end
-    end
+    # 这段，搬到 application_controller.rb
+    # def require_is_admin
+    #   # if current_user.email != '1@1'
+    #     if !current_user.admin?
+    #     redirect_to root_path, alert:"you are not admin"
+    #   end
+    # end
 
   private
     def job_params
