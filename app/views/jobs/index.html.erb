@@ -1,0 +1,28 @@
+<div class="pull-right">
+  <%= link_to("add a job", new_job_path, class:"btn btn-primary") %>
+</div>
+
+<table class="table table-boldered">
+<thead>
+  <tr>
+    <td>job.title</td>
+    <td>create time</td>
+  </tr>
+</thead>
+
+<tbody>
+  <% @jobs.each do |job| %>
+  <tr>
+    <td><%= link_to(job.title, job_path(job)) %> </td>
+    <td><%= job.created_at %></td>
+    <td><%= link_to('edit', edit_job_path(job), class:"btn btn-danger",) %>
+        <%= link_to('destroy', job_path(job),  class: "btn btn-danger",
+        method: :delete, data: {confirm: "are you sure to delete?"})%>
+
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+
+
+</table>
