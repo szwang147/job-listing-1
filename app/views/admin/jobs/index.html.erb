@@ -13,7 +13,16 @@
 <tbody>
   <% @jobs.each do |job| %>
   <tr>
-    <td><%= link_to(job.title, admin_job_path(job)) %> </td>
+    <td>
+      <%# if job.is_hidden %>
+        <!-- (hidden) -->
+      <%# else %>
+        <!-- (public) -->
+      <%# end %>
+      <!-- 以上这段重构 -->
+      <%= render_job_status(job) %>
+
+      <%= link_to(job.title, admin_job_path(job)) %> </td>
     <td><%= job.created_at %></td>
     <td><%= link_to('edit', edit_admin_job_path(job), class:"btn btn-danger",) %>
         <%= link_to('destroy', admin_job_path(job),  class: "btn btn-danger",
