@@ -2,10 +2,33 @@
   <%= link_to("add a job", new_job_path, class:"btn btn-primary") %>
 </div>
 
+<!-- attach dropdown panel -->
+<div class="dropdown clearfix pull-right">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  排序
+  <span class="caret"></span>
+</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+    <li>
+      <%= link_to("按照下限排序", jobs_path(order: "by_lower_bound")) %>
+    </li>
+    <li>
+      <%= link_to("按照上限排序", jobs_path(order: "by_upper_bound")) %>
+    </li>
+    <li>
+      <%= link_to("按照发表时间排序", jobs_path ) %>
+    </li>
+  </ul>
+</div>
+
+
+
 <table class="table table-boldered">
 <thead>
   <tr>
     <td>job.title</td>
+    <td>wage lower-limit</td>
+    <td>wage upper-limit</td>
     <td>create time</td>
   </tr>
 </thead>
@@ -14,6 +37,8 @@
   <% @jobs.each do |job| %>
   <tr>
     <td><%= link_to(job.title, job_path(job)) %> </td>
+    <td><%= job.wage_lower_bound %></td>
+    <td><%= job.wage_upper_bound %></td>
     <td><%= job.created_at %></td>
     <td><%= link_to('edit', edit_job_path(job), class:"btn btn-danger",) %>
         <%= link_to('destroy', job_path(job),  class: "btn btn-danger",
