@@ -6,6 +6,10 @@
 <thead>
   <tr>
     <td>job.title</td>
+    <td>resume count</td>
+    <td>wage lower-limit</td>
+    <td>wage upper-limit</td>
+    <td>manage item</td>
     <td>create time</td>
   </tr>
 </thead>
@@ -23,7 +27,9 @@
       <%= render_job_status(job) %>
 
       <%= link_to(job.title, admin_job_path(job)) %> </td>
-    <td><%= job.created_at %></td>
+      <td><%= link_to(job.resumes.count, admin_job_resumes_path(job)) %></td>
+      <td><%= job.wage_lower_bound %></td>
+      <td><%= job.wage_upper_bound %></td>
     <td><%= link_to('edit', edit_admin_job_path(job), class:"btn btn-danger",) %>
         <%= link_to('destroy', admin_job_path(job),  class: "btn btn-danger",
         method: :delete, data: {confirm: "are you sure to delete?"})%>
@@ -33,6 +39,8 @@
         <%= link_to("hide", hide_admin_job_path(job), method: :post, class:"btn btn-xs btn-default") %>
         <% end %>
     </td>
+    <td><%= job.created_at %></td>
+
   </tr>
   <% end %>
 </tbody>
