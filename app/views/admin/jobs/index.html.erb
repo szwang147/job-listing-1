@@ -27,7 +27,11 @@
     <td><%= link_to('edit', edit_admin_job_path(job), class:"btn btn-danger",) %>
         <%= link_to('destroy', admin_job_path(job),  class: "btn btn-danger",
         method: :delete, data: {confirm: "are you sure to delete?"})%>
-
+        <% if job.is_hidden %>
+        <%= link_to("publish", publish_admin_job_path(job), method: :post, class:"btn btn-xs btn-default") %>
+        <% else %>
+        <%= link_to("hide", hide_admin_job_path(job), method: :post, class:"btn btn-xs btn-default") %>
+        <% end %>
     </td>
   </tr>
   <% end %>

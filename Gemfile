@@ -34,6 +34,7 @@ gem "devise"
 gem "awesome_rails_console"
 gem "will_paginate"
 gem "simple_form"
+gem "font-awesome-rails"
 
 
 group :development, :test do
